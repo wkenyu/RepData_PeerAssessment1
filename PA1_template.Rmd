@@ -1,9 +1,6 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-author: "Kenyu Wada"
-date: "2017/6/18"
-output: html_document
----
+Reproducible Research: Peer Assessment 1
+========================================
+<!-- rmarkdown v1 -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -26,7 +23,7 @@ legend("topright", col=c("red", "blue"), lty = 1, legend=c("mean", "median"))
 summary(total_steps)
 ```
 
-##What is the average daily activity pattern?
+## What is the average daily activity pattern?
  Here's a time series plot for 5-minute interval and average number of steps taken.
  This plot tells us which interval on average contains most steps.
 ```{r}
@@ -35,7 +32,7 @@ plot(mean_steps, type ="l")
 which.max(mean_steps)
 ```
 
-##Imputing missing values
+## Imputing missing values
  There are 2304 missing value in steps.I filled in the mean value for the 5 minute interval, this affects the mean and median value to be the same value, and increase both value. 
 ```{r}
 length(which(is.na(activity$steps)))
@@ -48,7 +45,9 @@ abline(v = median(total2), col = "blue", lwd=2)
 legend("topright", col=c("red", "blue"), lty = 1, legend=c("mean", "median"))
 summary(total2)
 ```
-##Are there differences in activity patterns between weekdays and weekends?
+## Are there differences in activity patterns between weekdays and weekends?
+ I will show the time series plot to answering this question: Yes, there are differences
+ 
 ```{r}
 isweekend <- function(x) {ifelse(weekdays(x)=="Saturday" | weekdays(x)=="Sunday", "weekend", "weekday")}
 dates <- as.Date(as.character(activity$date))
